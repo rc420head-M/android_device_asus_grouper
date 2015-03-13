@@ -12,37 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ifeq ($(TARGET_ARCH),arm)
 ifneq (,$(filter grouper tilapia, $(TARGET_DEVICE)))
-
-# This is a nasty hack. keystore.grouper is Open Source, but it
-# links against a non-Open library, so we can only build it
-# when that library is present.
+# Keystore.grouper is Open Source, but it links against a non-Open library,
+# Print a warning and skip this module if the library is not present in the
+# vendor directory or BOARD_HAS_TF_CRYPTO_SST has not been set
+BOARD_HAS_TF_CRYPTO_SST ?= $(if $(wildcard vendor/*/$(TARGET_DEVICE)/*/libtf_crypto_sst.so),true)
 ifeq ($(BOARD_HAS_TF_CRYPTO_SST),true)
-
-LOCAL_PATH := $(call my-dir)
-
-include $(CLEAR_VARS)
-
-LOCAL_MODULE := keystore.grouper
-
-LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
-
-LOCAL_SRC_FILES := \
-	keymaster_grouper.cpp
-
-LOCAL_C_INCLUDES := \
-	libcore/include \
-	$(LOCAL_PATH)/../security/tf_sdk/include
-
-LOCAL_CFLAGS := -fvisibility=hidden -Wall -Werror
-
-LOCAL_SHARED_LIBRARIES := libcutils liblog libcrypto libtf_crypto_sst
-
-LOCAL_MODULE_TAGS := optional
-
-include $(BUILD_SHARED_LIBRARY)
-
+	LOCAL_PATH := $(call my-dir)
+	include $(CLEAR_VARS)
+	LOCAL_MODULE := keystore.grouper
+	LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
+	LOCAL_SRC_FILES := keymaster_grouper.cpp
+	LOCAL_CFLAGS := -Werror
+	LOCAL_SHARED_LIBRARIES := libcutils liblog libcrypto libtf_crypto_sst
+	LOCAL_MODULE_TAGS := optional
+	LOCAL_MODULE_OWNER := google
+	include $(BUILD_SHARED_LIBRARY)
+else
+$(warning WARNING : Skipping keystore.grouper - Dependency Not Found libtf_crypto_sst )
 endif
 endif
-endif
+

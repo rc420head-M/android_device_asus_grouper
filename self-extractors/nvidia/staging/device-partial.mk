@@ -71,4 +71,3 @@ PRODUCT_PACKAGES := \
     libstagefrighthw \
     libtf_crypto_sst
 
-PRODUCT_PACKAGES += keystore.grouper
