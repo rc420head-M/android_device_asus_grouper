@@ -40,6 +40,8 @@ on post-fs-data
     setprop vold.post_fs_data_done 1
 
 on boot
+    symlink system/lib/egl /egl
+    chmod system system /egl
 
 # bluetooth
     # UART device
