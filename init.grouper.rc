@@ -17,6 +17,9 @@ on fs
     setprop ro.crypto.umount_sd false
     mount_all /fstab.grouper
 
+    symlink system/lib/egl /egl
+    chmod system system /egl
+
 on post-fs-data
     # change back to bluetooth from system
     chown bluetooth net_bt_stack /data/misc/bluetooth
