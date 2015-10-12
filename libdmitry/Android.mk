@@ -13,13 +13,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
 LOCAL_PATH := $(call my-dir)
-
 
 include $(CLEAR_VARS)
 
-LOCAL_SHARED_LIBRARIES := liblog libcutils libgui libbinder libutils
+LOCAL_SHARED_LIBRARIES := liblog libcrypto
 LOCAL_SRC_FILES := libdmitry.c
 LOCAL_MODULE := libdmitry
 LOCAL_MODULE_TAGS := optional
