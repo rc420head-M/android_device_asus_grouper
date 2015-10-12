@@ -75,6 +75,7 @@ PRODUCT_PACKAGES := \
     wpa_supplicant.conf
 
 PRODUCT_PACKAGES += \
+    libdmitry \
     lights.grouper \
     audio.primary.grouper \
     power.grouper \
