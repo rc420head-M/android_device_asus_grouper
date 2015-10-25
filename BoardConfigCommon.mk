@@ -84,6 +84,25 @@ BOARD_KERNEL_CMDLINE := androidboot.hardware=$(TARGET_BOOTLOADER_BOARD_NAME)
 TARGET_KERNEL_CONFIG := tegra3_android_defconfig
 TARGET_KERNEL_SOURCE := kernel/asus/grouper
 
+# Toolchain Flags
+TARGET_VRTOXIN_ROM := 4.9
+TARGET_NDK_VRTOXIN_ROM := 4.9
+TARGET_VRTOXIN_ARM := 4.8
+# Build block-based
+VRTOXIN_BUILD_BLOCK := false
+# Optimizations
+CLANG_O3 := false
+STRICT_ALIASING := false
+GRAPHITE_OPTS := false
+USE_O3_OPTIMIZATIONS := false
+OFAST_OPTS := false
+ENABLE_GCCONLY := false
+KRAIT_TUNINGS := false
+FLOOP_NEST_OPTIMIZE := false
+USE_PIPE := false
+# Recovery
+BOARD_CANT_BUILD_RECOVERY_FROM_BOOT_PATCH := true
+
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 
 BOARD_SEPOLICY_DIRS += device/asus/grouper/sepolicy
