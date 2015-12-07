@@ -6,10 +6,10 @@
   "revision": "aosp-6.0"
   },
   {
-    "remote": "device",
-    "repository": "VRToxin-Devices/android_kernel_asus_grouper",
-    "target_path": "kernel/asus/grouper",
-    "revision": "M"
+  "remote": "device",
+  "repository": "android_kernel_asus_grouper",
+  "target_path": "kernel/asus/grouper",
+  "revision": "M"
   },
   {
   "remote": "github",
